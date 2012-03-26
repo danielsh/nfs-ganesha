@@ -225,6 +225,7 @@ int nfs_Readdir(nfs_arg_t * parg,
                 return NFS_REQ_OK;
               }
           }
+#if 0 /* XXX why would we do this? */
         else
           {
             /*
@@ -233,6 +234,7 @@ int nfs_Readdir(nfs_arg_t * parg,
              */
             memset(cookie_verifier, 0xFF, sizeof(cookieverf3));
           }
+#endif
         /*
          * At thist point we ignore errors, the next vnode
          * call will fail and we will return the error
