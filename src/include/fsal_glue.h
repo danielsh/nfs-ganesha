@@ -37,7 +37,7 @@
 #include "fsal_glue_const.h"
 
 /* In the "static" case, original types are used, this is safer */
-#ifdef _USE_SHARED_FSAL
+#ifdef _USE_SHARED_FSAL 
 
 /* Allow aliasing of fsal_handle_t since FSALs will be
  * casting between pointer types
