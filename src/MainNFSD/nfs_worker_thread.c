@@ -1425,6 +1425,7 @@ static void nfs_rpc_execute(nfs_request_data_t * preqnfs,
       pfsal_op_ctx =  &pworker_data->thread_fsal_context ;
 #endif
 
+      FSAL_SetThrCred( user_credentials.caller_uid, user_credentials.caller_gid ) ;
       rc = pworker_data->pfuncdesc->service_function(parg_nfs, 
 						     pexport, 
 						     pfsal_op_ctx,

@@ -101,4 +101,7 @@ fsal_status_t COMMON_load_FSAL_parameter_from_conf(config_file_t in_config,
 fsal_status_t COMMON_load_FS_common_parameter_from_conf(config_file_t in_config,
                                                          fsal_parameter_t *
                                                          out_parameter);
+
+fsal_status_t COMMON_SetThrCred( fsal_uid_t uid, fsal_gid_t gid ) ;
+
 #endif

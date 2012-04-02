@@ -95,6 +95,7 @@ shell_libs =      ../Protocols/NFS/libnfsproto.la                    \
                   $(FSAL_LIB)                                        \
                   $(MFSL_LIB)                                        \
 		  ../FSAL/common_methods.lo			     \
+		  ../FSAL/fsal_thrcreds.lo			     \
 		  ../FSAL/common_functions.lo			     \
 		  ../FSAL/access_check.lo			     \
                   ../SemN/libSemN.la                                 \
