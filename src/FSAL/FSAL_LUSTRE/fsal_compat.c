@@ -95,6 +95,7 @@ fsal_functions_t fsal_lustre_functions = {
   .fsal_removexattrbyid = LUSTREFSAL_RemoveXAttrById,
   .fsal_removexattrbyname = LUSTREFSAL_RemoveXAttrByName,
   .fsal_getextattrs = COMMON_getextattrs_notsupp,
+  .fsal_setthrcred = COMMON_SetThrCred,
   .fsal_getfileno = LUSTREFSAL_GetFileno
 };
 
