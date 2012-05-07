@@ -41,8 +41,8 @@
 
 /* hashe table definitions */
 
-static unsigned long hash_digest_idx(hash_parameter_t * p_conf, hash_buffer_t * p_key);
-static unsigned long hash_digest_rbt(hash_parameter_t * p_conf, hash_buffer_t * p_key);
+static uint32_t hash_digest_idx(hash_parameter_t * p_conf, hash_buffer_t * p_key);
+static uint64_t hash_digest_rbt(hash_parameter_t * p_conf, hash_buffer_t * p_key);
 static int cmp_digest(hash_buffer_t * p_key1, hash_buffer_t * p_key2);
 
 static int print_digest(hash_buffer_t * p_val, char *outbuff);
@@ -133,9 +133,9 @@ static void handle_free(handle_pool_entry_t * p_handle)
 
 /* hash table functions */
 
-static unsigned long hash_digest_idx(hash_parameter_t * p_conf, hash_buffer_t * p_key)
+static uint32_t hash_digest_idx(hash_parameter_t * p_conf, hash_buffer_t * p_key)
 {
-  unsigned long hash;
+  uint32_t hash;
   digest_pool_entry_t *p_digest = (digest_pool_entry_t *) p_key->pdata;
 
   hash =
@@ -148,9 +148,10 @@ static unsigned long hash_digest_idx(hash_parameter_t * p_conf, hash_buffer_t * 
 
 }
 
-static unsigned long hash_digest_rbt(hash_parameter_t * p_conf, hash_buffer_t * p_key)
+static uint64_t hash_digest_rbt(hash_parameter_t * p_conf, hash_buffer_t * p_key)
 {
-  unsigned long hash;
+  uint64_t hash = 0LL ;
+
   digest_pool_entry_t *p_digest = (digest_pool_entry_t *) p_key->pdata;
 
   hash = (257 * p_digest->nfs23_digest.object_id + 541);
@@ -184,9 +185,11 @@ static int print_digest(hash_buffer_t * p_val, char *outbuff)
 
 static int print_handle(hash_buffer_t * p_val, char *outbuff)
 {
-  handle_pool_entry_t *p_handle = (handle_pool_entry_t *) p_val->pdata;
+  handle_pool_entry_t *phandle = (handle_pool_entry_t *) p_val->pdata;
+ 
+  snprintHandle(outbuff, HASHTABLE_DISPLAY_STRLEN, &phandle->handle);
 
-  return snprintHandle(outbuff, HASHTABLE_DISPLAY_STRLEN, &p_handle->handle);
+  return strnlen(  outbuff, HASHTABLE_DISPLAY_STRLEN ) ;
 }
 
 int handle_mapping_hash_add(hash_table_t * p_hash,
