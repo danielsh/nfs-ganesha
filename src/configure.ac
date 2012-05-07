@@ -236,7 +236,7 @@ fi
 AM_CONDITIONAL(USE_UPCALL_SIMULATOR, test "$enable_upcall_simulator" = "yes")
 
 # FSAL switch argument (default is PROXY)
-AC_ARG_WITH( [fsal], AS_HELP_STRING([--with-fsal=HPSS|POSIX|PROXY|SNMP|FUSE|LUSTRE|XFS|GPFS|ZFS|VFS|CEPH|DYNFSAL|SHOOK (default=PROXY)],
+AC_ARG_WITH( [fsal], AS_HELP_STRING([--with-fsal=HPSS|POSIX|PROXY|SNMP|FUSE|LUSTRE|XFS|GPFS|ZFS|VFS|CEPH|SHOOK (default=PROXY)],
              [specify the type of filesystem to be exported] ), FSAL="$withval", FSAL="PROXY")
 
 # exporting USE_FSAL_... for conditional compilation
